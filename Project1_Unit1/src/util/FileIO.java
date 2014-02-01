@@ -1,3 +1,7 @@
+/*
+ * Xuefeng Zhai
+ * xzhai@cmu.edu
+ */
 package util;
 import model.Automobile;
 import java.io.*;

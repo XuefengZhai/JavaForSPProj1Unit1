@@ -1,3 +1,7 @@
+/*
+ * Xuefeng Zhai
+ * xzhai@cmu.edu
+ */
 package model;
 
 public class OptionSet implements
