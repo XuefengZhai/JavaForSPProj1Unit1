@@ -6,12 +6,24 @@ package util;
 import model.Automobile;
 import java.io.*;
 
-
+/*
+ * Class for File IO
+ */
 public class FileIO {
 
+	/*
+	 * Read in a file and build object of automobile
+	 */
 	public Automobile buildAutoObject(String filename){
 		
+		/*
+		 * Create new auto object for building
+		 */
 		Automobile model = new Automobile();
+		
+		/*
+		 * Variables for save data
+		 */
 		String autoName = null;
 		float autoPrice = 0;
 		int optSetSize = 0;
@@ -19,8 +31,12 @@ public class FileIO {
 		int optSize = 0;
 		String optName = null;
 		float optPrice= 0;
+		
 		System.out.println("Readin data from a file...");
 		
+		/*
+		 * Read and parse the data in the file
+		 */
 		try{
 			FileReader file = new FileReader(filename);
 			BufferedReader buff = new BufferedReader(file);
@@ -33,6 +49,9 @@ public class FileIO {
 			optSetSize = Integer.parseInt(buff.readLine());
 			model = new Automobile(autoName,autoPrice,optSetSize);
 			
+			/*
+			 * Read in option sets in the loop
+			 */
 			for(int i=0;i<optSetSize;i++){
 				buff.readLine();
 				buff.readLine();
@@ -41,6 +60,9 @@ public class FileIO {
 				optSize = Integer.parseInt(buff.readLine());
 				model.setOptset(optSetName,i,optSize);
 				buff.readLine();
+				/*
+				 * Read in options in the loop
+				 */
 				for(int j=0;j<optSize;j++)
 				{
 					buff.readLine();
@@ -59,6 +81,9 @@ public class FileIO {
 		return model;
 	}
 	
+	/*
+	 * Serialize
+	 */
 	public void serializeAuto(Automobile model){
 		try
 		{
@@ -73,6 +98,9 @@ public class FileIO {
 		}
 	}
 	
+	/*
+	 * Deserialize
+	 */
 	public Automobile deserializeAuto(String filename){
 		Automobile model = new Automobile();
 		try{
