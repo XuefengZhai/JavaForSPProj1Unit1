@@ -6,7 +6,7 @@ package util;
 
 import model.Automobile;
 
-public class Test {
+public class Driver {
 
 	public static void main(String[] args) {
 		
