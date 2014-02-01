@@ -4,6 +4,9 @@
  */
 package model;
 
+/*
+ * Automobile Serializable Class
+ */
 public class Automobile implements
 java.io.Serializable
 {
@@ -13,6 +16,9 @@ java.io.Serializable
 	private float baseprice;
 	private OptionSet optset[];
 	
+	/*
+	 * Constroctors
+	 */
 	public Automobile(){
 	
 	}
@@ -26,7 +32,9 @@ java.io.Serializable
 		}
 	}
 
-
+	/*
+	 * Getters
+	 */
 	public String getName() {
 		return name;
 	}
@@ -34,14 +42,20 @@ java.io.Serializable
 	public float getBaseprice() {
 		return baseprice;
 	}
-
+	
 	public OptionSet getOpset(int index) {
 		return optset[index];
 	}
+
 	
 	public OptionSet[] getOpset(){
 		return optset;
 	}
+
+
+	/*
+	 * Setters
+	 */
 
 	public void setName(String name) {
 		this.name = name;
@@ -51,17 +65,25 @@ java.io.Serializable
 		this.baseprice = baseprice;
 	}
 
-
+	/*
+	 * Set option set
+	 */
 	public void setOptset(String name, int optIndex, int size) {
 		
 		optset[optIndex] = new OptionSet(name, size);		
 	}
 	
+	/*
+	 * Set option of an option set
+	 */
 	public void setOpt(String name, float price, int setIndex, int optIndex) {
 		
 		this.optset[setIndex].setOpt(name, price, optIndex);
 	}
 
+	/*
+	 * Find option set by name
+	 */
 	public OptionSet findOptSet(String optionSetName){
 	
 		int i;
@@ -73,6 +95,9 @@ java.io.Serializable
 		return optset[i];	
 	}
 	
+	/*
+	 * Find option by option set name and option
+	 */
 	public OptionSet.Option findOpt(String optionSetName,String optionName){
 		
 		int i,j;
@@ -93,22 +118,33 @@ java.io.Serializable
 		
 	}
 	
+	/*
+	 * Delete Option by mark its name by null
+	 */
 	public void deleteOption(String optionSetName, String optionName){
 		findOpt(optionSetName, optionName).setPrice(0);
 		findOpt(optionSetName, optionName).setName(null);
 	}
 	
+	/*
+	 * Delete Option Set by mark its name by null
+	 */
 	public void deleteOptionSet(String name){
 		
 		findOptSet(name).setName(null);
 		
 	}
-		
+	
+	/*
+	 * Update OptionSet by its name
+	 */
 	public void updateOptionSet (String oldName, String newName){
 		findOptSet(oldName).setName(newName);
 	}
 	
-	
+	/*
+	 * Update Option by its name
+	 */
 	public void updateOption (String optionSetName, String oldOptionName, String newName, float newPrice){
 		findOpt(optionSetName, oldOptionName).setPrice(newPrice);
 		findOpt(optionSetName, oldOptionName).setName(newName);
@@ -117,6 +153,9 @@ java.io.Serializable
 		
 	}
 	
+	/*
+	 * Print an automobile and its optione sets and options
+	 */
 	public void print(){
 		System.out.println("Name of the automobile: " + this.name);
 		System.out.println("Base price of the automobile: "+ this.baseprice);
